@@ -1,0 +1,14 @@
+body {
+    margin: 0px;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#navBarButtons {
+    display: flex;
+    gap: 20px;
+}

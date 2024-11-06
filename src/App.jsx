@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axiosInstance from './API/edamam.js'
 import './App.css'
+import Navbar from './Navbar'
 
 const fetchRecipe = async (query) => { 
   try { 
@@ -19,7 +20,15 @@ const fetchRecipe = async (query) => {
 function App() {
   return (
     <>
-    
+      <Navbar></Navbar>
+      <div id="home">
+        <div id="pantry">
+
+        </div>
+        <div id="recipes">
+
+        </div>
+      </div>
     </>
   )
 }
