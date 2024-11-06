@@ -2,20 +2,8 @@ import { useState, useEffect } from 'react'
 import axiosInstance from './API/edamam.js'
 import './App.css'
 import Navbar from './Navbar'
+import fetchRecipe from './methods.jsx'
 
-const fetchRecipe = async (query) => { 
-  try { 
-    const response = await axiosInstance.get('/', { 
-      params: { 
-        q: query
-      }
-    })
-    console.log(response.data.hits);
-    return response.data.hits;
-  } catch (err) { 
-    console.log(`Error: ${err.message}`);
-  }
-}
 
 
 function App() {
