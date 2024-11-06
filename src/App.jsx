@@ -9,17 +9,42 @@ const fetchRecipe = async (query) => {
         q: query
       }
     })
-    console.log(response.data);
-    return response.data;
+    console.log(response.data.hits);
+    return response.data.hits;
   } catch (err) { 
     console.log(`Error: ${err.message}`);
   }
 }
 
+
 function App() {
+  const [recipes, setRecipes] = useState([]);
+  const [input, setInput] = useState("");
+  
+  useEffect(() => {
+    const getRecipes = async () => { 
+      const data = await fetchRecipe(input);
+      setRecipes(data);
+    };
+    getRecipes();
+  }, []);
+
   return (
     <>
-    
+    <h1>Recipes List </h1> 
+    {
+      recipes.map( (item, index) => { 
+        return ( 
+          <div key={index}> 
+          <h2> 
+            {item.recipe.label}
+            <img src={item.recipe.image}/>
+          </h2>
+          
+          </div>
+        )
+      })
+    }
     </>
   )
 }
