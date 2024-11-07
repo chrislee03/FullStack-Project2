@@ -9,6 +9,7 @@ app.use(express.json());
 //ENABLES CORS
 app.use(cors());
 
+//DATABASE
 let pantry = [];
 
 //GET ALL INGREDIENTS IN PANTRY

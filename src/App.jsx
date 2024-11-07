@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import PantryApp from './components/pantry.jsx';
+import RecipeApp from './components/Recipe';
 
 
 
@@ -19,6 +20,7 @@ function App() {
         </div>
       </div>
       <PantryApp/>
+      <RecipeApp/>
     </>
   )
 }

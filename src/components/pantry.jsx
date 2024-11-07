@@ -1,5 +1,6 @@
 
 import axiosPantry from '../axiosPantry.js'
+import './pantry.css'
 import {useState, useEffect} from 'react';
 
 const PantryApp = () => {
@@ -17,6 +18,9 @@ const PantryApp = () => {
     }
 
     const addIngredient = async () => {
+        if (newIngredient.trim() == "") { 
+            return alert("Can't add empty item!");
+        }
         if (pantry.some((item) => item.content.toLowerCase() === newIngredient.toLowerCase())) { 
             return alert("Item is already in the pantry!");
         }
