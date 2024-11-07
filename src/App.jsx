@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css';
 import Navbar from './components/Navbar';
 import PantryApp from './components/pantry.jsx';
-import Recipe from './components/RecipeCard.jsx';
+import RecipeApp from './components/Recipe.jsx'
 
 
 
@@ -14,6 +14,7 @@ function App() {
       <div id="home">
         <PantryApp/>
         <div id="recipes">
+          <RecipeApp/>
         </div>
       </div>
     </>
