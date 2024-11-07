@@ -17,6 +17,9 @@ const PantryApp = () => {
     }
 
     const addIngredient = async () => {
+        if (pantry.some((item) => item.content.toLowerCase() === newIngredient.toLowerCase())) { 
+            return alert("Item is already in the pantry!");
+        }
         try { 
             const response = await axiosPantry.post('/', { 
                 content: newIngredient
