@@ -1,8 +1,13 @@
+import express from 'express'
+import cors from 'cors';
+
 //PANTRY API
-const express = require('express');
 const port = 3000;
 const app = express();
+
 app.use(express.json());
+//ENABLES CORS
+app.use(cors());
 
 let pantry = [];
 
@@ -51,7 +56,7 @@ app.delete('/pantry/:id', (req, res) => {
     try { 
         const id = parseInt(req.params.id);
         const initialLength = pantry.length;
-        pantry.filter((t) => t.id !== id);
+        pantry = pantry.filter((t) => t.id !== id);
         
         if (pantry.length < initialLength) { 
             res.status(201).send(`Deleted Item id:${id}`)
@@ -65,7 +70,8 @@ app.delete('/pantry/:id', (req, res) => {
 
 //LISTEN TO MAKE SURE IT IS RUNNING
 app.listen(port, () => {
-    console.log(`App is running on http:/localhost:${port}`);
+    console.log(`App is running on http://localhost:${port}`);
 })
+
 
 export default app;
