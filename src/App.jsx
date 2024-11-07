@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import './App.css'
-import Navbar from './components/Navbar'
+import './App.css';
+import Navbar from './components/Navbar';
 import PantryApp from './components/pantry.jsx';
+import Recipe from './components/Recipe';
 
 
 
@@ -11,14 +12,12 @@ function App() {
     <>
       <Navbar></Navbar>
       <div id="home">
-        <div id="pantry">
-
-        </div>
+        <PantryApp/>
         <div id="recipes">
-
+          <Recipe/>
+          <Recipe/>
         </div>
       </div>
-      <PantryApp/>
     </>
   )
 }
