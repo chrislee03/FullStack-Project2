@@ -1,5 +1,5 @@
-import axiosInstance from '../axiosEdamam';
-import axiosPantry from '../axiosPantry';
+import axiosInstance from '../axiosInstances/axiosEdamam';
+import axiosPantry from '../axiosInstances/axiosPantry';
 import {useState} from 'react';
 import { useEffect } from 'react';
 import RecipeCard from './RecipeCard';
@@ -11,7 +11,7 @@ const RecipeApp = () => {
 
     const fetchIngredients = async () => {
         try { 
-            const response = await axiosPantry.get('/');
+            const response = await axiosPantry.get('/pantry');
             //Want to extract only content 
             const ingredients = response.data.map((item) => item.content);
             setCurrentIngredients(ingredients);
@@ -22,7 +22,7 @@ const RecipeApp = () => {
 
     const fetchRecipes = async () => {
         try { 
-            const response = await axiosInstance.get('/', {
+            const response = await axiosInstance.get('/pantry', {
                 params: {
                     q: currentIngredients.join(',')
                 }
