@@ -1,4 +1,3 @@
-
 import axiosPantry from '../axiosPantry.js'
 import './pantry.css'
 import {useState, useEffect} from 'react';

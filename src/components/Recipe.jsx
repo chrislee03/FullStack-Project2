@@ -2,6 +2,7 @@ import axiosInstance from '../axiosEdamam';
 import axiosPantry from '../axiosPantry';
 import {useState} from 'react';
 import { useEffect } from 'react';
+import RecipeCard from './RecipeCard';
 
 const RecipeApp = () => {
     const [recipes, setRecipes] = useState([])
@@ -47,7 +48,10 @@ const RecipeApp = () => {
                recipes.map((item) => {
                 return(
                     <li> 
-                        {item.recipe.label}
+                        <RecipeCard 
+                        title={item.recipe.label} 
+                        image={item.recipe.image}
+                        />
                     </li>
                 )
                })
