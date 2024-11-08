@@ -19,44 +19,51 @@ const RecipeApp = () => {
         }
     }
 
+    const fetchRecipes = async () => {
+        try { 
+            const response = await axiosInstance.get('/', {
+                params: {
+                    q: currentIngredients.join(',')
+                }
+            })
+            setRecipes(response.data.hits);
+        } catch (err) {
+            console.log(`Error: ${err.message}`);
+        }
+    }
+
+    const refreshRecipes = async () => {
+        await fetchIngredients();
+        await fetchRecipes();
+    }
+
     useEffect(() => {
         fetchIngredients();
     }, [])
 
+
     useEffect(() => {
         if (currentIngredients.length > 0) { 
-            const fetchRecipes = async () => {
-                try { 
-                    const response = await axiosInstance.get('/', {
-                        params: {
-                            q: currentIngredients.join(',')
-                        }
-                    })
-                    setRecipes(response.data.hits);
-                } catch (err) {
-                    console.log(`Error: ${err.message}`);
-                }
-            }
             fetchRecipes();
         }
     }, [currentIngredients])
 
 
     return ( 
+        <>
+        <button onClick={() => refreshRecipes()}> Refresh </button>
         <ul> 
             {
                recipes.map((item) => {
                 return(
                     <li> 
-                        <RecipeCard 
-                        title={item.recipe.label} 
-                        image={item.recipe.image}
-                        />
+                        <RecipeCard title={item.recipe.label} image={item.recipe.image} cals = {Math.round(item.recipe.calories)}/>
                     </li>
                 )
                })
             }
         </ul>
+        </>
     )
 }
 

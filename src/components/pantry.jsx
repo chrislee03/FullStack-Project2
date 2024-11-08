@@ -50,30 +50,33 @@ const PantryApp = () => {
     }, [] ); 
 
     return ( 
-        <>
-        <h1> Pantry </h1>
-        <div className="pantryInput">
+        <div className="pantry">
+        <h1 className="pantry-title"> My Pantry </h1>
+        <div>
             <input 
                 type="text"
                 placeholder="Add Ingredient Here"
                 value={newIngredient}
                 onChange = {(e) => setNewIngredient(e.target.value)} 
+                className="pantry-input"
             />
-            <button className ="add" onClick={() => addIngredient()}> 
-                + 
+            <button className ="pantry-button add" onClick={() => addIngredient()}> 
+                 +
             </button>
         </div> 
-        <ul>
+        <ul className="items-list">
             {
                 pantry.map((item) => (
-                    <li key={item.id}>
+                    <li key={item.id} className="item">
                         {item.content}{" "}
-                        <button onClick={() => deleteIngredient(item.id)}> x </button>
+                        <button onClick={() => deleteIngredient(item.id)} className="pantry-button remove"> 
+                            - 
+                        </button>
                     </li>
                 ) )
             }
         </ul>
-        </>
+        </div>
     )
 }
 

@@ -7,7 +7,7 @@ const Recipe = ({image, title, cals}) => {
                 <img src={image}></img>
                 <div class="recipeText">
                     <h2>{title}</h2>
-                    <p>Calories: {cals}</p>
+                    <p> <b> Calories: </b> {cals}</p>
                 </div>
             </div>
         </>
