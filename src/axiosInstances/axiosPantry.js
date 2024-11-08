@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3000/pantry';
+const url = 'http://localhost:3000';
 
 const axiosPantry = axios.create({
     baseURL: url,

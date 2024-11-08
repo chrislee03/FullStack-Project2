@@ -3,6 +3,7 @@ import axiosPantry from '../axiosPantry';
 import {useState} from 'react';
 import { useEffect } from 'react';
 import RecipeCard from './RecipeCard';
+import './Recipe.css';
 
 const RecipeApp = () => {
     const [recipes, setRecipes] = useState([])
@@ -51,18 +52,20 @@ const RecipeApp = () => {
 
     return ( 
         <>
-        <button onClick={() => refreshRecipes()}> Refresh </button>
-        <ul> 
-            {
-               recipes.map((item) => {
-                return(
-                    <li> 
-                        <RecipeCard title={item.recipe.label} image={item.recipe.image} cals = {Math.round(item.recipe.calories)}/>
-                    </li>
-                )
-               })
-            }
-        </ul>
+            <div id="recipeContainer">
+                <button onClick={() => refreshRecipes()}> Refresh </button>
+                <div id="recipeGrid">
+                    {
+                    recipes.map((item) => {
+                        return(
+                            
+                                <RecipeCard title={item.recipe.label} image={item.recipe.image} cals = {Math.round(item.recipe.calories)}/>
+                            
+                        )
+                    })
+                    }
+                </div>
+            </div>
         </>
     )
 }

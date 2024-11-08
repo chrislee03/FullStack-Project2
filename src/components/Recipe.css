@@ -1,0 +1,11 @@
+#recipeContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+#recipeGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

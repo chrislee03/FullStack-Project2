@@ -3,7 +3,7 @@ import "./RecipeCard.css";
 const Recipe = ({image, title, cals}) => {
     return (
         <>
-            <div class="recipe">
+            <div class="recipeCard">
                 <img src={image}></img>
                 <div class="recipeText">
                     <h2>{title}</h2>

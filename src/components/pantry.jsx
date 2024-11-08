@@ -1,4 +1,4 @@
-import axiosPantry from '../axiosPantry.js'
+import axiosPantry from '../axiosInstances/axiosPantry.js'
 import './pantry.css'
 import {useState, useEffect} from 'react';
 
@@ -9,7 +9,7 @@ const PantryApp = () => {
 
     const getPantry = async () => { 
         try { 
-            const response = await axiosPantry.get('/');
+            const response = await axiosPantry.get('/pantry');
             setPantry(response.data);
         } catch (err) {
             console.log(`Error: ${err.message}`);
@@ -24,7 +24,7 @@ const PantryApp = () => {
             return alert("Item is already in the pantry!");
         }
         try { 
-            const response = await axiosPantry.post('/', { 
+            const response = await axiosPantry.post('/pantry', { 
                 content: newIngredient
             })
             setPantry([...pantry, response.data]);
@@ -37,7 +37,7 @@ const PantryApp = () => {
     const deleteIngredient = async (id) => {
         try {
             //delete from API
-            await axiosPantry.delete(`/${id}`);
+            await axiosPantry.delete(`/pantry/${id}`);
             //delete from currentPantry
             setPantry(pantry.filter((t) => t.id !== id));
         } catch (err) {

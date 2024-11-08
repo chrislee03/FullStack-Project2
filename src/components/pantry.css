@@ -4,7 +4,7 @@
 
 .pantry { 
     border: 1px solid black;
-    width: 25%;
+    flex:1;
     height: 500px;
     
     display: flex;

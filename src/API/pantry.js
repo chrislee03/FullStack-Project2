@@ -11,6 +11,9 @@ app.use(cors());
 
 //DATABASE
 let pantry = [];
+const recipes = [];
+
+
 
 //GET ALL INGREDIENTS IN PANTRY
 //NEED TO IMPORT DATA FROM DATABASE
@@ -72,6 +75,33 @@ app.delete('/pantry/:id', (req, res) => {
 //LISTEN TO MAKE SURE IT IS RUNNING
 app.listen(port, () => {
     console.log(`App is running on http://localhost:${port}`);
+})
+
+/* ADDING TO SAVED RECIPES */
+
+//RETRIEVE ALL SAVED RECIPES
+app.get('/recipes', (req, res) => {
+    try { 
+        res.json(recipes);
+    } catch (err) {
+        console.log(`Error: ${err.message}`);
+    }  
+}) 
+
+//SAVE RECIPE TO MYCOLLECTION
+app.post('/recipes', (req, res) => {
+    try { 
+    //Provides unique id to serve as primary key
+        const id = recipes.length + 1;
+        const savedRecipe = { 
+            id: id,
+            content: req.body.content,
+        }
+        recipes.push(savedRecipe);
+        res.json(savedRecipe);
+    } catch (err) {
+        console.log(`Error: ${err.message}`)
+    }
 })
 
 
