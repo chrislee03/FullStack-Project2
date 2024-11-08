@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import RecipeCard from './RecipeCard';
 import './Recipe.css';
 
-import savedRecipes from './savedRecipes';
 
 const RecipeApp = () => {
     const [recipes, setRecipes] = useState([])
@@ -39,7 +38,7 @@ const RecipeApp = () => {
         try { 
             const recipe = recipes.find((t) => t.recipe.label === label)
             //uploading the recipe to the saved Recipes database
-            const response = await axiosPantry.post('/recipes', recipe);
+            const response = await axiosPantry.post('/recipes', {content: recipe});
             // Double check to make sure recipe was saved
             if (response) { 
                 console.log("Recipe saved successfully");
@@ -94,7 +93,6 @@ const RecipeApp = () => {
                     }
                 </div>
             </div>
-            <savedRecipes/>
         </>
     )
 }

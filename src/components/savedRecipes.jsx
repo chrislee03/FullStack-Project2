@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import axiosPantry from '../axiosInstances/axiosPantry';
 
-const savedRecipes = () => {
+const SavedRecipes = () => {
     const [recipes, setRecipes] = useState([]);
 
     const fetchRecipes = async () => {
@@ -19,7 +19,7 @@ const savedRecipes = () => {
         <ul id="savedRecipes">
             {
                 recipes.map((item) => (
-                    <li> {item.content}</li>
+                    <li key={item.id}> item </li>
                 ))
             }
         </ul>
@@ -27,4 +27,4 @@ const savedRecipes = () => {
     )
 }
 
-export default savedRecipes;
+export default SavedRecipes;

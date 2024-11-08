@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
 import './App.css';
 import Navbar from './components/Navbar';
 import PantryApp from './components/pantry.jsx';
 import RecipeApp from './components/Recipe.jsx'
+import SavedRecipes from './components/savedRecipes.jsx';
+
 
 
 
@@ -15,6 +16,7 @@ function App() {
         <PantryApp/>
         <div id="recipes">
           <RecipeApp/>
+          <SavedRecipes/>
         </div>
       </div>
     </>
