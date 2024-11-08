@@ -3,6 +3,7 @@ import axiosPantry from '../axiosInstances/axiosPantry';
 
 const SavedRecipes = () => {
     const [recipes, setRecipes] = useState([]);
+    const validRecipes = recipes.filter(item => item.content?.recipe?.label);
 
     const fetchRecipes = async () => {
         const response = await axiosPantry.get('/recipes');
@@ -18,8 +19,8 @@ const SavedRecipes = () => {
         <h1> My Recipes </h1>
         <ul id="savedRecipes">
             {
-                recipes.map((item) => (
-                    <li key={item.id}> item </li>
+                validRecipes.map((item) => (
+                    <li key={item.id}> {item.content.recipe.label} </li>
                 ))
             }
         </ul>
