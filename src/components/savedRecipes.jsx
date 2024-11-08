@@ -14,6 +14,8 @@ const savedRecipes = () => {
     }, [])
 
     return ( 
+        <>
+        <h1> My Recipes </h1>
         <ul id="savedRecipes">
             {
                 recipes.map((item) => (
@@ -21,5 +23,8 @@ const savedRecipes = () => {
                 ))
             }
         </ul>
+        </>
     )
 }
+
+export default savedRecipes;
