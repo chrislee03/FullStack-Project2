@@ -13,12 +13,14 @@ function App() {
     <>
       <Navbar></Navbar>
       <div id="home">
-        <PantryApp/>
-        <div id="recipes">
+        <div id="pantryAppContainer">
+          <PantryApp/>
+        </div>
+        <div id="recipeAppContainer">
           <RecipeApp/>
-          <SavedRecipes/>
         </div>
       </div>
+      <SavedRecipes/>
     </>
   )
 }

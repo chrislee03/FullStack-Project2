@@ -1,11 +1,35 @@
 #recipeContainer {
     display: flex;
     flex-direction: column;
-    flex: 3;
+    min-width: 800px;
+
+}
+
+#recipeTitle {
+    border: 1px solid black;
+    border-radius: 40px;
+    margin: 5px;
+    height: 70px;
+    display: flex;
+    text-align: center;
 }
 
 #recipeGrid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+#recipeBottom {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3F3F3;
+    border-radius: 40px;
+    margin: 5px;
+    min-height: 500px;
+    padding: 10px;
+}
+
+#recipeGrid {
+    
 }

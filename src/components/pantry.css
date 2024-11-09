@@ -3,8 +3,6 @@
 }
 
 .pantry { 
-    border: 1px solid black;
-    flex:1;
     height: 500px;
     
     display: flex;
@@ -15,12 +13,37 @@
     position: relative;
     left: 50px;
 
-    border-radius: 50px;
 
 }
 
+#pantryTitle {
+    background-color: #F3F3F3;
+    border-radius: 40px;
+    margin: 5px;
+    height: 70px;
+}
+
+#pantryBottom {
+    border: 1px solid black;
+    height: 500px;
+    border-radius: 40px;
+    padding: 10px;
+    margin: 5px;
+}
+
+#pantryInput {
+    border: 1px solid black;
+    border-radius: 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
 .pantry-input { 
-    border-radius: 10px;
+    border: 0px;
+    border-radius: 30px;
     padding: 10px 20px;
     text-align: left;
     font-size: 18px;

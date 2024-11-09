@@ -50,33 +50,37 @@ const PantryApp = () => {
     }, [] ); 
 
     return ( 
-        <div className="pantry">
-        <h1 className="pantry-title"> My Pantry </h1>
-        <div>
-            <input 
-                type="text"
-                placeholder="Add Ingredient Here"
-                value={newIngredient}
-                onChange = {(e) => setNewIngredient(e.target.value)} 
-                className="pantry-input"
-            />
-            <button className ="pantry-button add" onClick={() => addIngredient()}> 
-                 +
-            </button>
-        </div> 
-        <ul className="items-list">
-            {
-                pantry.map((item) => (
-                    <li key={item.id} className="item">
-                        {item.content}{" "}
-                        <button onClick={() => deleteIngredient(item.id)} className="pantry-button remove"> 
-                            - 
-                        </button>
-                    </li>
-                ) )
-            }
-        </ul>
-        </div>
+        <>
+            <div id="pantryTitle">
+                <h1 id="pantry-title">Pantry</h1>
+            </div>
+            <div id="pantryBottom">
+                <div id="pantryInput">
+                    <input 
+                        type="text"
+                        placeholder="Add Ingredient Here"
+                        value={newIngredient}
+                        onChange = {(e) => setNewIngredient(e.target.value)} 
+                        className="pantry-input"
+                    />
+                    <button className ="pantry-button add" onClick={() => addIngredient()}> 
+                        +
+                    </button>
+                </div> 
+                <ul className="items-list">
+                    {
+                        pantry.map((item) => (
+                            <li key={item.id} className="item">
+                                <button onClick={() => deleteIngredient(item.id)} className="pantry-button remove"> 
+                                    - 
+                                </button>
+                                {item.content}{" "}
+                            </li>
+                        ) )
+                    }
+                </ul>
+            </div>
+        </>
     )
 }
 

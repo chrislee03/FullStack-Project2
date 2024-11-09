@@ -76,8 +76,11 @@ const RecipeApp = () => {
 
     return ( 
         <>
-            <div id="recipeContainer">
+            <div id="recipeTitle">
+                <h1>Recipes</h1>
                 <button onClick={() => refreshRecipes()}> Refresh </button>
+            </div>
+            <div id="recipeBottom">
                 <div id="recipeGrid">
                     {
                     recipes.map((item) => {

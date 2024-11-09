@@ -1,0 +1,25 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
+  max-width: 1300px;
+
+}
+
+#recipeAppContainer {
+  display: flex;
+  flex-direction: column;
+  min-width: 800px;
+}
+
+#pantryAppContainer {
+  display: flex;
+  flex-direction: column;
+}
