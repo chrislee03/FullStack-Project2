@@ -11,13 +11,9 @@
     margin: 5px;
     height: 70px;
     display: flex;
-    text-align: center;
-}
-
-#recipeGrid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 #recipeBottom {
@@ -28,8 +24,25 @@
     margin: 5px;
     min-height: 500px;
     padding: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#refreshButton:hover { 
+    color: black;
+    background-color: rgb(255, 255, 133);
+}
+#refreshButton {
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: black;
+    color: #F7FE8A;
+    border: 0px;
 }
 
-#recipeGrid {
-    
+#placeholder {
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
 }

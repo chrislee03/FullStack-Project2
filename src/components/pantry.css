@@ -21,6 +21,10 @@
     border-radius: 40px;
     margin: 5px;
     height: 70px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #pantryBottom {
@@ -62,22 +66,25 @@
 }
 
 .pantry-button:hover { 
+    color: black;
     background-color: rgb(255, 255, 133);
 }
 
 .pantry-button { 
-    width: 20px;
-    height: 20px;
-    
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
     border: black;
 }
 
 .add { 
-    color: green;
-    background-color: rgb(138, 255, 138); 
+    color: #F7FE8A;
+    background-color: black; 
 }
 
 .remove { 
     color: red;
     background-color: rgb(255, 138, 138);
+    width: 30px;
+    height: 30px;
 }

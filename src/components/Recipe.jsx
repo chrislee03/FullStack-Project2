@@ -77,11 +77,11 @@ const RecipeApp = () => {
     return ( 
         <>
             <div id="recipeTitle">
+                <div id="placeholder"></div>
                 <h1>Recipes</h1>
-                <button onClick={() => refreshRecipes()}> Refresh </button>
+                <button id="refreshButton" onClick={() => refreshRecipes()}> Refresh </button>
             </div>
             <div id="recipeBottom">
-                <div id="recipeGrid">
                     {
                     recipes.map((item) => {
                         return(
@@ -94,7 +94,6 @@ const RecipeApp = () => {
                         )
                     })
                     }
-                </div>
             </div>
         </>
     )
