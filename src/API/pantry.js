@@ -71,6 +71,36 @@ app.delete('/pantry/:id', async (req, res) => {
     }
 });
 
+//EXTRACTS ALL SAVED RECIPES
+app.get('/recipes', async (req, res) => {
+    try { 
+        const {recipesCollection} = await connectToDatabase();
+        const recipes = await recipesCollection.find().toArray();
+        res.status(200).json(recipes);
+    } catch (err) {
+        console.log(`Error: ${err.message}`);
+        res.status(500).send("Server error");
+    }
+})
+
+//save recipe
+app.post('/recipes', async (req, res) => {
+    try { 
+        const {recipesCollection} = await connectToDatabase();
+        const savedRecipe = {
+            id: Date.now(),
+            content: req.body.content,
+        }
+        await recipesCollection.insertOne(savedRecipe);
+        res.status(201).json(savedRecipe);
+    } catch (err) { 
+        console.log(`Error: ${err.message}`);
+        res.status(500).send("Server Error");
+    }
+})
+
+//delete saved recipe
+
 // Close MongoDB client when the app is terminated
 process.on('SIGINT', async () => {
     await client.close();
