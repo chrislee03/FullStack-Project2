@@ -1,108 +1,83 @@
-import express from 'express'
+import express from 'express';
 import cors from 'cors';
+import { connectToDatabase, client } from './app.js';
 
-//PANTRY API
 const port = 3000;
 const app = express();
 
 app.use(express.json());
-//ENABLES CORS
 app.use(cors());
 
-//DATABASE
-let pantry = [];
-const recipes = [];
-
-
-
-//GET ALL INGREDIENTS IN PANTRY
-//NEED TO IMPORT DATA FROM DATABASE
-app.get('/pantry', (req, res) => {
-    try { 
+// GET All Ingredients in Pantry
+app.get('/pantry', async (req, res) => {
+    try {
+        const { pantryCollection } = await connectToDatabase();
+        const pantry = await pantryCollection.find().toArray();
         res.json(pantry);
-    } catch (err) { 
-        console.log(`Error: ${err.message}`);
-    }
-})
-
-//GET SINGULAR INGREDIENT BASED ON ID
-app.get('/pantry/:id', (req, res) => { 
-    try { 
-        const id = parseInt(req.params.id);
-        const item = pantry.find((t) => t.id === id);
-        if (item) { 
-            res.json(item);
-        } else { 
-            res.status(404).send("Item not found");
-        }  
     } catch (err) {
         console.log(`Error: ${err.message}`);
         res.status(500).send("Server Error");
     }
-})
+});
 
-//POST to ADD INGREDIENTS TO PANTRY
-app.post('/pantry', (req, res) => {
+// GET Singular Ingredient Based on ID
+app.get('/pantry/:id', async (req, res) => {
     try {
-        const newIngredient = { 
-            id: pantry.length + 1,
-            content: req.body.content,
-        }
-        pantry.push(newIngredient);
-        res.status(201).json(newIngredient);
-    } catch (err) { 
-        console.log(`Error: ${err.message}`);
-        res.status(500).send("Server Error");
-    }
-}) 
-//DELETE to remove ingredient from pantry
-app.delete('/pantry/:id', (req, res) => {
-    try { 
         const id = parseInt(req.params.id);
-        const initialLength = pantry.length;
-        pantry = pantry.filter((t) => t.id !== id);
-        
-        if (pantry.length < initialLength) { 
-            res.status(201).send(`Deleted Item id:${id}`)
+        const { pantryCollection } = await connectToDatabase();
+        const item = await pantryCollection.findOne({ id: id });
+        if (item) {
+            res.json(item);
         } else {
             res.status(404).send("Item not found");
         }
-    } catch (err) { 
+    } catch (err) {
         console.log(`Error: ${err.message}`);
+        res.status(500).send("Server Error");
     }
-})
+});
 
-//LISTEN TO MAKE SURE IT IS RUNNING
+// POST to Add Ingredients to Pantry
+app.post('/pantry', async (req, res) => {
+    try {
+        const newIngredient = {
+            id: Date.now(),
+            content: req.body.content,
+        };
+        const { pantryCollection } = await connectToDatabase();
+        await pantryCollection.insertOne(newIngredient);
+        res.status(201).json(newIngredient);
+    } catch (err) {
+        console.log(`Error: ${err.message}`);
+        res.status(500).send("Server Error");
+    }
+});
+
+// DELETE to Remove Ingredient from Pantry
+app.delete('/pantry/:id', async (req, res) => {
+    try {
+        const id = parseInt(req.params.id);
+        const { pantryCollection } = await connectToDatabase();
+        const result = await pantryCollection.deleteOne({ id: id });
+
+        if (result.deletedCount > 0) {
+            res.status(200).send(`Deleted Item id: ${id}`);
+        } else {
+            res.status(404).send("Item not found");
+        }
+    } catch (err) {
+        console.log(`Error: ${err.message}`);
+        res.status(500).send("Server Error");
+    }
+});
+
+// Close MongoDB client when the app is terminated
+process.on('SIGINT', async () => {
+    await client.close();
+    console.log("MongoDB connection closed");
+    process.exit(0);
+});
+
 app.listen(port, () => {
     console.log(`App is running on http://localhost:${port}`);
-})
-
-/* ADDING TO SAVED RECIPES */
-
-//RETRIEVE ALL SAVED RECIPES
-app.get('/recipes', (req, res) => {
-    try { 
-        res.json(recipes);
-    } catch (err) {
-        console.log(`Error: ${err.message}`);
-    }  
-}) 
-
-//SAVE RECIPE TO MYCOLLECTION
-app.post('/recipes', (req, res) => {
-    try { 
-    //Provides unique id to serve as primary key
-        const id = recipes.length + 1;
-        const savedRecipe = { 
-            id: id,
-            content: req.body.content,
-        }
-        recipes.push(savedRecipe);
-        res.json(savedRecipe);
-    } catch (err) {
-        console.log(`Error: ${err.message}`)
-    }
-})
-
-
-export default app;
+});
