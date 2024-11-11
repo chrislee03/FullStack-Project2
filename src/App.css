@@ -23,3 +23,33 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+h1 {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+a {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+li {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+input {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+button {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
