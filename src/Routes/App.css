@@ -53,3 +53,14 @@ button {
   font-weight: 400;
   font-style: normal;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.navBarButtons {
+  display: flex;
+  gap: 20px;
+}

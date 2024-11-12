@@ -23,7 +23,7 @@ const RecipeApp = () => {
 
     const fetchRecipes = async () => {
         try { 
-            const response = await axiosInstance.get('/recipes', {
+            const response = await axiosInstance.get('/', {
                 params: {
                     q: currentIngredients.join(',')
                 }
