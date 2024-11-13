@@ -1,11 +1,11 @@
-#recipeContainer {
+.recipeContainer {
     display: flex;
     flex-direction: column;
     min-width: 800px;
 
 }
 
-#recipeTitle {
+.recipeTitle {
     border: 1px solid black;
     border-radius: 40px;
     margin: 5px;
@@ -16,7 +16,7 @@
     padding: 10px;
 }
 
-#recipeBottom {
+.recipeBottom {
     display: flex;
     flex-direction: column;
     background-color: #F3F3F3;
@@ -28,11 +28,13 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
-#refreshButton:hover { 
+
+.refreshButton:hover { 
     color: black;
     background-color: rgb(255, 255, 133);
 }
-#refreshButton {
+
+.refreshButton {
     width: 100px;
     height: 50px;
     border-radius: 30px;
@@ -41,7 +43,7 @@
     border: 0px;
 }
 
-#placeholder {
+.placeholder {
     width: 100px;
     height: 50px;
     border-radius: 30px;

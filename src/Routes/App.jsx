@@ -1,5 +1,8 @@
-import NavBar from '../components/NavBar.jsx';
-
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import NavBar from '../components/Nav-Bar.jsx';
+import HomeApp from './HomeApp.jsx';
+import CollectionApp from './CollectionApp.jsx';
+import './App.css';
 
 function App() {
   return (
@@ -9,7 +12,13 @@ function App() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
         <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet"></link>
       </head>
-      <NavBar/>
+      <Router> 
+            <NavBar/>
+            <Routes>
+                <Route path="/Home" element={<HomeApp/>}/>
+                <Route path='/Collection' element={<CollectionApp/>}/>
+            </Routes>
+      </Router>
     </>
   )
 }

@@ -54,13 +54,4 @@ button {
   font-style: normal;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
 
-.navBarButtons {
-  display: flex;
-  gap: 20px;
-}

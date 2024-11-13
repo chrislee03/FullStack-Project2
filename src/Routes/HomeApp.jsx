@@ -1,6 +1,6 @@
 import './App.css';
-import PantryApp from '../components/pantry.jsx';
-import RecipeApp from '../components/Recipe.jsx'
+import PantryApp from '../components/Pantry.jsx';
+import RecipeApp from '../components/Recipe.jsx';
 
 const HomeApp =() => {
     return ( 
@@ -13,7 +13,7 @@ const HomeApp =() => {
           <RecipeApp/>
         </div>
       </div>
-        </>
+       </>
     )
 }
 

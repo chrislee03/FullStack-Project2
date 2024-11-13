@@ -1,0 +1,32 @@
+* { 
+  box-sizing: border-box;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 95vw;
+  }
+  
+  .navBarButtons {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+  }
+
+.nav-title{ 
+  position: relative;
+  font-weight: bold;
+  font-size: 25px;
+  top: 15px;
+}
+
+  .nav-button { 
+    text-decoration: none;
+    color: black;
+  }
+
+  .nav-button:hover { 
+    text-decoration: underline;
+  }

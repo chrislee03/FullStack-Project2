@@ -1,13 +1,12 @@
-import savedRecipes from '../components/savedRecipes';
-import NavBar from '../components/NavBar.jsx';
+import SavedRecipes from '../components/SavedRecipes.jsx';
 
-const Collection = () => {
+const CollectionApp = () => {
     
     return (
         <>
-        <NavBar/>
+            <SavedRecipes/>
         </>
    )
 }
 
-export default Collection;
+export default CollectionApp;

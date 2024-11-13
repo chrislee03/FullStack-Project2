@@ -99,7 +99,24 @@ app.post('/recipes', async (req, res) => {
     }
 })
 
+
 //delete saved recipe
+app.delete('/recipes/:id', async (req, res) => {
+    try { 
+        const {recipesCollection} = await connectToDatabase();
+        const id = parseInt(req.params.id);
+        const result = await recipesCollection.deleteOne({id: id})
+
+        if (result.deletedCount > 0) {
+            res.status(200).send(`Recipe with id: ${id} has been successfully deleted`);
+        } else { 
+            res.status(404).send("Recipe not found");
+        }
+    } catch (err) { 
+        console.log(`Error: ${err.message}`);
+        res.status(500).send("Couldn't Delete Recipe");
+    }
+})
 
 // Close MongoDB client when the app is terminated
 process.on('SIGINT', async () => {
